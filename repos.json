@@ -100,8 +100,8 @@
     "title" : "TESTMASTER",
     "repo" : "https://github.com/muratsu/cordova-medic",
     "category" : "TESTMASTER",
-    "release" : "main",
-    "current" : "main"
+    "release" : "master",
+    "current" : "master"
 },{
     "title" : "COHO",
     "repo" : "https://git-wip-us.apache.org/repos/asf/cordova-coho.git",
