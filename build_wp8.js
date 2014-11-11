@@ -5,6 +5,7 @@ var config = require('./config');
 var wp8  = require('./src/build/makers/wp8');
 var argv = require('optimist').argv;
 var error_writer = require('./src/build/makers/error_writer');
+var testcheck = require('./testchecker');
 
 // this assumes that you start it in the sandbox
 
@@ -27,11 +28,17 @@ buildinfo('WP8', BRANCH, function (error, sha ) {
         var test_timeout = config.app.timeout ? config.app.timeout : 10 * 60;
 
         wp8(output_location, sha, config.wp8.target, config.app.entry, config.couchdb.host, test_timeout).then(function() {
+            return testcheck(sha, config.couchdb.host);
+        }).then(function (testCheckResult) {
+            TEST_OK = testCheckResult;
+
+            if (TEST_OK) {
                 console.log('WP8 test execution completed');
-            }, function(err) {
-                TEST_OK=false;
-                error_writer('wp8', sha, 'WP8 tests execution failed.', err);
-            });
+            }
+        }).catch(function (err) {
+            TEST_OK=false;
+            error_writer('wp8', sha, 'WP8 tests execution failed.', err);
+        });
     }
 });
 
