@@ -98,10 +98,10 @@
 },
 {
     "title" : "TESTMASTER",
-    "repo" : "http://github.com/msopentech/cordova-medic",
+    "repo" : "https://github.com/muratsu/cordova-medic",
     "category" : "TESTMASTER",
-    "release" : "windows-fixes",
-    "current" : "windows-fixes"
+    "release" : "main",
+    "current" : "main"
 },{
     "title" : "COHO",
     "repo" : "https://git-wip-us.apache.org/repos/asf/cordova-coho.git",
